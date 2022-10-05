@@ -7,16 +7,16 @@
             $importe=$_REQUEST['importe'];
             $iva=$_REQUEST['iva'];
             if ($edad<18){
-                echo "Eres menor de edad y el importe es ";
+                echo "Eres menor de edad ";
             }
             else {
-                echo "Eres mayor de edad y el importe es ";
+                echo "Eres mayor de edad ";
             }
             $importe*=$iva;
             if (isset($_REQUEST['special'])){
                 $importe+=$_REQUEST['special'];
             }
-            echo "$importe";
+            echo "y el importe es $importe.";
         ?>
     </body>
 </html>
