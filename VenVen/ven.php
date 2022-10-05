@@ -3,29 +3,29 @@
     </head>
     <body>
         <?php
-            echo "Ven, ven lejos de los malos suenos<br>
+            echo "Ven, ven lejos de los malos sueños<br>
             Donde nuestro amor no sienta miedo<br>
             Volaremos juuuntos sin temer la oscuridad<br>
-            Tu y yooooooooooo<br>
-            Miiiles de kilometros sin ti<br>
+            Tú y yooooooooooo<br>
+            Miiiles de kilómetros sin ti<br>
             Nuestro camino se cruza al fin<br>
             Quisiera ser<br>
-            Un nino que olvido crecer<br>
+            Un niño que olvidó crecer<br>
             Para estar<br>
-            Jugando contiiigo una vez mas<br>
+            Jugando contiiigo una vez más<br>
             Robando las flores de tu jardin<br>
             Y decirte<br>
             Las cosas que nooo supe decir<br>
             Cruzaremos la luz<br>
-            Que ira<br>
+            Que irá<br>
             Iluminando un mundo que parezca pequeño<br>
             Al lado de nuestra voz<br>
-            Con la ilusion de vooolver<br>
+            Con la ilusión de vooolver<br>
             A ser como aayeeeeeer<br>
-            Ven, ven lejos de los malos suenos<br>
+            Ven, ven lejos de los malos sueños<br>
             Donde nuestro amor no sienta miedo<br>
             Volaremos juuuntos sin temer la oscuridad<br>
-            Tu y yooooooooooooooooooooooooo<br>";
+            Tú y yooooooooooooooooooooooooo<br>";
         ?>
     </body>
 </html>
