@@ -8,18 +8,19 @@
                 if ($maxmin=="maximo"){
                     if ($res<$two){
                         $res=$two;
-                        if ($res<$three){
-                            $res=$three;
-                        }
+                    }
+                    if ($res<$three){
+                        $res=$three;
                     }
                 }
                 else {
                     if ($res>$two){
                         $res=$two;
-                        if ($res>$three){
-                            $res=$three;
-                        }
                     }
+                    if ($res>$three){
+                        $res=$three;
+                    }
+                    
                 }
                 return $res;
             }
