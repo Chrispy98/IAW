@@ -5,7 +5,7 @@
         <?php
             $nums=array(rand(0,30),rand(0,30),rand(0,30),rand(0,30),rand(0,30));
             echo "Los números son el $nums[0], $nums[1], $nums[2], $nums[3] y el $nums[4]<br>";
-            $posicion=0;
+            $posicion=1;
             function maxPosVector ($l, &$pos){
                 $max=$l[0];
                 for ($i=1; $i<sizeof($l); $i++){
