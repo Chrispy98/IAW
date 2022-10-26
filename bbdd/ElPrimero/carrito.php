@@ -10,7 +10,7 @@
                 ('$_REQUEST[matricula]','$_REQUEST[marca]')";
 
             mysqli_query($conexion,$insercion)
-                 or die("Problemas en el select".mysqli_error($conexion));
+                 or die("Problemas en el insert: ".mysqli_error($conexion));
         
             mysqli_close($conexion); 
 
