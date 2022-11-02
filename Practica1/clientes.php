@@ -38,6 +38,7 @@
             <input type="submit" name="consultar" value="Consultar clientes">
         </form>
         <?php
+            include 'funcionesFloristeria.php';
             if (isset($boton)){
                 if ($boton==0){
                     if (isset($_REQUEST['dni']) && $_REQUEST['dni']!="" 
@@ -56,13 +57,18 @@
                     }
                 } else if ($boton==1){
                     if (isset($_REQUEST['dni']) && $_REQUEST['dni']!=""){
-                        $conexion=mysqli_connect("localhost","root","","practica")
-                            or die("Problemas de conexión");
-                        $delete="DELETE FROM cliente WHERE dni='$_REQUEST[dni]';";
-                        mysqli_query($conexion,$delete) 
-                            or die("Problemas en el delete: ".mysqli_error($conexion));
-                        mysqli_close($conexion);
-                        echo "Se ha borrado el cliente con DNI ".$_REQUEST['dni'];
+                        if (clienteExists($_REQUEST['dni'])){
+                            $conexion=mysqli_connect("localhost","root","","practica")
+                                or die("Problemas de conexión");
+                            $delete="DELETE FROM cliente WHERE dni='$_REQUEST[dni]';";
+                            mysqli_query($conexion,$delete) 
+                                or die("Problemas en el delete: ".mysqli_error($conexion));
+                            mysqli_close($conexion);
+                            echo "Se ha borrado el cliente con DNI ".$_REQUEST['dni'];
+                        }
+                        else {
+                                echo "No existe el cliente con DNI ".$_REQUEST['dni'];
+                        }
                     }
                     else {
                         echo "Tienes que indicar el DNI del cliente.";

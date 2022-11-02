@@ -38,6 +38,7 @@
             <input type="submit" name="consultar" value="Consultar productos">
         </form><br>
         <?php
+            include 'funcionesFloristeria.php';
             if (isset($boton)){
                 if ($boton==0){
                     if (isset($_REQUEST['idflor']) && $_REQUEST['idflor']!="" 
@@ -56,13 +57,18 @@
                     }
                 } else if ($boton==1){
                     if (isset($_REQUEST['idflor']) && $_REQUEST['idflor']!=""){
-                        $conexion=mysqli_connect("localhost","root","","practica")
-                            or die("Problemas de conexión");
-                        $delete="DELETE FROM flores WHERE idflor=$_REQUEST[idflor];";
-                        mysqli_query($conexion,$delete) 
-                            or die("Problemas en el delete: ".mysqli_error($conexion));
-                        mysqli_close($conexion);
-                        echo "Se ha borrado la flor con ID ".$_REQUEST['idflor'];
+                        if (florExists($_REQUEST['idflor'])){
+                            $conexion=mysqli_connect("localhost","root","","practica")
+                                or die("Problemas de conexión");
+                            $delete="DELETE FROM flores WHERE idflor=$_REQUEST[idflor];";
+                            mysqli_query($conexion,$delete) 
+                                or die("Problemas en el delete: ".mysqli_error($conexion));
+                            mysqli_close($conexion);
+                            echo "Se ha borrado la flor con ID ".$_REQUEST['idflor'];
+                        }
+                        else {
+                            echo "No existe la flor con ID ".$_REQUEST['idflor'];
+                        }
                     }
                     else {
                         echo "Tienes que indicar el ID de la flor.";
