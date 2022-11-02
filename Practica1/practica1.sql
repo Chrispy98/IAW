@@ -4,15 +4,15 @@ CREATE TABLE cliente (
      cuenta_bancaria VARCHAR);
 
 CREATE TABLE flores (
-     idflor NUMBER PRIMARY KEY NOT NULL,
-     precio NUMBER,
-     cantidad NUMBER NOT NULL);
+     idflor INT PRIMARY KEY NOT NULL,
+     precio INT,
+     cantidad INT NOT NULL);
 
 CREATE TABLE compras (
      dni VARCHAR,
-     idflor NUMBER,
+     idflor INT,
      fecha DATE,
-     cantidad NUMBER, 
+     cantidad INT, 
      PRIMARY KEY (dni, idflor), 
      FOREIGN KEY (dni) REFERENCES cliente(dni), 
      FOREIGN KEY (idflor) REFERENCES flores(idflor));
