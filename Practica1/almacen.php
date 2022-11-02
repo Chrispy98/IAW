@@ -38,46 +38,48 @@
             <input type="submit" name="consultar" value="Consultar productos">
         </form><br><br>
         <?php
-            if ($boton==0){
-                if (isset($_REQUEST['idflor']) && isset($_REQUEST['precio']) && isset($_REQUEST['cantidad'])){
-                    $conexion=mysqli_connect("localhost","root","","practica")
-                        or die("Problemas de conexión");
-                    $insert="INSERT INTO flores VALUES ($_REQUEST[idflor],$_REQUEST[precio],$_REQUEST[cantidad]);";
-                    mysqli_query($conexion,$insert) 
-                        or die("Problemas en el insert: ".mysqli_error($conexion));
-                    mysqli_close($conexion);
-                    echo "Las flores han sido dadas de alta";
-                }
-                else {
-                    echo "Tienes que completar todos los campos";
-                }
-            } else if ($boton==1){
-                if (isset($_REQUEST['idflor'])){
-                    $conexion=mysqli_connect("localhost","root","","practica")
-                        or die("Problemas de conexión");
-                    $delete="DELETE FROM flores WHERE idflor=$_REQUEST[idflor];";
-                    mysqli_query($conexion,$delete) 
-                        or die("Problemas en el delete: ".mysqli_error($conexion));
-                    mysqli_close($conexion);
-                    echo "Se ha borrado la flor con id ".$_REQUEST['idflor'];
-                }
-                else {
-                    echo "Tienes que indicar el id de la flor.";
-                }
-            } else if ($boton==2) {
-                $conexion=mysqli_connect("localhost","root","","practica")
-                    or die("Problemas de conexión");
-                $select="SELECT idflor, precio, cantidad FROM flores;";
-                $filas=mysqli_query($conexion,$select) 
-                    or die("Problemas en el select: ".mysqli_error($conexion));
-                if ($filas) {
-                    $fila=mysqli_fetch_array($filas);
-                    while ($fila) {
-                        echo "IDFlor: ".$fila['idflor']." | Precio: ".$fila['precio']." | Cantidad: ".$fila['cantidad']."<br>";
-                        $fila=mysqli_fetch_array($filas);
+            if (isset($boton)){
+                if ($boton==0){
+                    if (isset($_REQUEST['idflor']) && isset($_REQUEST['precio']) && isset($_REQUEST['cantidad'])){
+                        $conexion=mysqli_connect("localhost","root","","practica")
+                            or die("Problemas de conexión");
+                        $insert="INSERT INTO flores VALUES ($_REQUEST[idflor],$_REQUEST[precio],$_REQUEST[cantidad]);";
+                        mysqli_query($conexion,$insert) 
+                            or die("Problemas en el insert: ".mysqli_error($conexion));
+                        mysqli_close($conexion);
+                        echo "Las flores han sido dadas de alta";
                     }
+                    else {
+                        echo "Tienes que completar todos los campos";
+                    }
+                } else if ($boton==1){
+                    if (isset($_REQUEST['idflor'])){
+                        $conexion=mysqli_connect("localhost","root","","practica")
+                            or die("Problemas de conexión");
+                        $delete="DELETE FROM flores WHERE idflor=$_REQUEST[idflor];";
+                        mysqli_query($conexion,$delete) 
+                            or die("Problemas en el delete: ".mysqli_error($conexion));
+                        mysqli_close($conexion);
+                        echo "Se ha borrado la flor con id ".$_REQUEST['idflor'];
+                    }
+                    else {
+                        echo "Tienes que indicar el id de la flor.";
+                    }
+                } else if ($boton==2) {
+                    $conexion=mysqli_connect("localhost","root","","practica")
+                        or die("Problemas de conexión");
+                    $select="SELECT idflor, precio, cantidad FROM flores;";
+                    $filas=mysqli_query($conexion,$select) 
+                        or die("Problemas en el select: ".mysqli_error($conexion));
+                    if ($filas) {
+                        $fila=mysqli_fetch_array($filas);
+                        while ($fila) {
+                            echo "IDFlor: ".$fila['idflor']." | Precio: ".$fila['precio']." | Cantidad: ".$fila['cantidad']."<br>";
+                            $fila=mysqli_fetch_array($filas);
+                        }
+                    }
+                    mysqli_close($conexion);
                 }
-                mysqli_close($conexion);
             }
         ?>
     </body>
