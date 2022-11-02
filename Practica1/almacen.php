@@ -36,7 +36,7 @@
             <input type="submit" name="alta" value="Alta">
             <input type="submit" name="baja" value="Baja">
             <input type="submit" name="consultar" value="Consultar productos">
-        </form><br><br>
+        </form><br>
         <?php
             if (isset($boton)){
                 if ($boton==0){
