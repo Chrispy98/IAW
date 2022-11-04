@@ -42,7 +42,7 @@
                 if (isset($_REQUEST['idflor']) && isset($_REQUEST['precio']) && isset($_REQUEST['cantidad'])){
                     $conexion=mysqli_connect("localhost","root","","practica")
                         or die("Problemas de conexión");
-                    $insert="INSERT INTO flores VALUES ($_REQUEST['idflor'],$_REQUEST['precio'],$_REQUEST['cantidad']);";
+                    $insert="INSERT INTO flores VALUES ($_REQUEST[idflor],$_REQUEST[precio],$_REQUEST[cantidad]);";
                     mysqli_query($conexion,$insert) 
                         or die("Problemas en el insert: ".mysqli_error($conexion));
                     mysqli_close($conexion);
@@ -55,7 +55,7 @@
                 if (isset($_REQUEST['idflor'])){
                     $conexion=mysqli_connect("localhost","root","","practica")
                         or die("Problemas de conexión");
-                    $delete="DELETE FROM flores WHERE idflor=$_REQUEST['idflor'];";
+                    $delete="DELETE FROM flores WHERE idflor=$_REQUEST[idflor];";
                     mysqli_query($conexion,$delete) 
                         or die("Problemas en el delete: ".mysqli_error($conexion));
                     mysqli_close($conexion);

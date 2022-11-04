@@ -26,9 +26,9 @@
     ?>
     <body>
         <a href="principal.html">Home</a>
-        <a href="almacen.html">Almacén</a>
-        <a href="clientes.html">Clientes</a>
-        <a href="compras.html">Compras</a><br><br>
+        <a href="almacen.php">Almacén</a>
+        <a href="clientes.php">Clientes</a>
+        <a href="compras.php">Compras</a><br><br>
         <form action="" method="post">
             IDFlor: <input type="number" name="idflor"><br><br>
             Precio: <input type="number" name="precio"><br><br>

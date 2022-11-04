@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 02-11-2022 a las 08:57:27
+-- Tiempo de generación: 04-11-2022 a las 10:05:43
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.2.33
 
@@ -33,6 +33,13 @@ CREATE TABLE `cliente` (
   `cuenta_bancaria` varchar(30) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Volcado de datos para la tabla `cliente`
+--
+
+INSERT INTO `cliente` (`dni`, `nombre`, `cuenta_bancaria`) VALUES
+('12345678A', 'Da Vinci', 'ES02 2309 3905 3093');
+
 -- --------------------------------------------------------
 
 --
@@ -40,9 +47,10 @@ CREATE TABLE `cliente` (
 --
 
 CREATE TABLE `compras` (
+  `idcompra` int(11) NOT NULL,
   `dni` varchar(15) NOT NULL,
   `idflor` int(11) NOT NULL,
-  `fecha` date DEFAULT NULL,
+  `fecha` datetime DEFAULT NULL,
   `cantidad` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -59,6 +67,13 @@ CREATE TABLE `flores` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
+-- Volcado de datos para la tabla `flores`
+--
+
+INSERT INTO `flores` (`idflor`, `precio`, `cantidad`) VALUES
+(1998, 42, 30);
+
+--
 -- Índices para tablas volcadas
 --
 
@@ -72,14 +87,25 @@ ALTER TABLE `cliente`
 -- Indices de la tabla `compras`
 --
 ALTER TABLE `compras`
-  ADD PRIMARY KEY (`dni`,`idflor`),
-  ADD KEY `idflor` (`idflor`);
+  ADD PRIMARY KEY (`idcompra`),
+  ADD KEY `compras_ibfk_1` (`dni`),
+  ADD KEY `compras_ibfk_2` (`idflor`);
 
 --
 -- Indices de la tabla `flores`
 --
 ALTER TABLE `flores`
   ADD PRIMARY KEY (`idflor`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `compras`
+--
+ALTER TABLE `compras`
+  MODIFY `idcompra` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Restricciones para tablas volcadas

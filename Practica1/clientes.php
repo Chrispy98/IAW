@@ -26,9 +26,9 @@
     ?>
     <body>
         <a href="principal.html">Home</a>
-        <a href="almacen.html">Almacén</a>
-        <a href="clientes.html">Clientes</a>
-        <a href="compras.html">Compras</a><br><br>
+        <a href="almacen.php">Almacén</a>
+        <a href="clientes.php">Clientes</a>
+        <a href="compras.php">Compras</a><br><br>
         <form action="" method="post">
             DNI: <input type="text" name="dni"><br><br>
             Nombre: <input type="text" name="nombre"><br><br>

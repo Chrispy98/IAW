@@ -24,12 +24,12 @@
     ?>
     <body>
         <a href="principal.html">Home</a>
-        <a href="almacen.html">Almacén</a>
-        <a href="clientes.html">Clientes</a>
-        <a href="compras.html">Compras</a><br><br>
+        <a href="almacen.php">Almacén</a>
+        <a href="clientes.php">Clientes</a>
+        <a href="compras.php">Compras</a><br><br>
         <form action="" method="post">
             NIF: <input type="text" name="dni"><br><br>
-            ID: <input type="number" name="idflor"><br><br>
+            IDFlor: <input type="number" name="idflor"><br><br>
             Cantidad: <input type="number" name="cantidad"><br><br>
             <input type="submit" name="alta" value="Alta">
             <input type="submit" name="extracto" value="Extracto de compras">
@@ -46,15 +46,16 @@
                         if (sePuedeComprar($_REQUEST['idflor'])){
                             $conexion=mysqli_connect("localhost", "root", "", "practica") 
                                  or die("Problemas en la conexión");
-                            $insert="INSERT INTO compras VALUES ('$_REQUEST[dni]', $_REQUEST[idflor], NOW(), $_REQUEST[cantidad])";
+                            $insert="INSERT INTO compras (dni, idflor, fecha, cantidad)
+                                VALUES ('$_REQUEST[dni]', $_REQUEST[idflor], NOW(), $_REQUEST[cantidad])";
                             mysqli_query($conexion,$insert)
-                                or die ("Problemas en el insert: ".mysqli_error());
+                                or die("Problemas en el insert: ".mysqli_error($conexion));
                             mysqli_close($conexion);
                             $conexion=mysqli_connect("localhost", "root", "", "practica") 
                                  or die("Problemas en la conexión");
                             $update="UPDATE flores SET cantidad=cantidad-$_REQUEST[cantidad] WHERE idFlor=$_REQUEST[idflor]";
                             mysqli_query($conexion,$update)
-                                or die ("Problemas en el update: ".mysqli_error());
+                                or die ("Problemas en el update: ".mysqli_error($conexion));
                             mysqli_close($conexion);
                             echo "Compra realizada correctamente";
                         }
@@ -69,17 +70,19 @@
                 else {
                     echo "Tienes que completar todos los campos";
                 }
-            } else if ($boton==1){
+            } 
+            
+            else if ($boton==1){
                 $conexion=mysqli_connect("localhost","root","","practica")
                         or die("Problemas de conexión");
-                $select="SELECT idflor, cantidad, dni, date_format(fecha, '%d-%m-%Y %H:%i:%s') AS fec FROM compras;";
+                $select="SELECT idcompra, idflor, cantidad, dni, date_format(fecha, '%d-%m-%Y %H:%i:%s') AS fec FROM compras;";
                 $filas=mysqli_query($conexion,$select) 
                     or die("Problemas en el select: ".mysqli_error($conexion));
                 if ($filas) {
                     $fila=mysqli_fetch_array($filas);
                     while ($fila) {
-                        echo "IDFlor: ".$fila['idflor']." | DNI: ".$fila['dni']." | Cantidad: ".$fila['cantidad'].
-                            "| Fecha: ".$fila['fec']."<br>";
+                        echo "IDCompra: ".$fila['idcompra']." | IDFlor: ".$fila['idflor']." | DNI: ".$fila['dni']." | Cantidad: ".$fila['cantidad'].
+                            " | Fecha: ".$fila['fec']."<br>";
                         $fila=mysqli_fetch_array($filas);
                     }
                 }

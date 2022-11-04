@@ -59,7 +59,7 @@
     function sePuedeComprar($id){
         $conexion=mysqli_connect("localhost", "root", "", "practica") 
             or die("Problemas en la conexión");
-        $select="SELECT COUNT(*) AS cont FROM compras WHERE idFlor=$idFlor AND fecha=NOW()";
+        $select="SELECT COUNT(*) AS cont FROM compras WHERE idFlor=$id AND fecha=NOW();";
         $filas=mysqli_query($conexion,$select)
             or die("Problemas con el select: ".mysqli_error($conexion));
         if ($filas){
