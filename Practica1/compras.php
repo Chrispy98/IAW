@@ -23,7 +23,7 @@
             
     ?>
     <body>
-        <a href="principal.html">Home</a>
+        <a href="principal.php">Home</a>
         <a href="almacen.php">Almacén</a>
         <a href="clientes.php">Clientes</a>
         <a href="compras.php">Compras</a><br><br>
