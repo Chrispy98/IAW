@@ -31,11 +31,12 @@
             <a href="compras.php">COMPRAS</a>
         </div><br><br>
         <form action="" method="post">
+            <div id="datos">
             NIF: <input type="text" name="nif"><br><br>
             IDFlor: <input type="number" name="idflor"><br><br>
-            Cantidad: <input type="number" name="cantidad"><br><br>
-            <input type="submit" name="alta" value="Alta">
-            <input type="submit" name="extracto" value="Extracto de compras">
+            Cantidad: <input type="number" name="cantidad"><br><br></div>
+            <div id="botones"><input type="submit" name="alta" value="Alta">
+            <input type="submit" name="extracto" value="Extracto de compras"></div>
         </form>
     </body>
     <?php
@@ -94,7 +95,7 @@
                 if ($filas) {
                     $fila=mysqli_fetch_array($filas);
                     while ($fila) {
-                        echo "IDCompra: ".$fila['idcompra']." | IDFlor: ".$fila['idflor']." | NIF: ".$fila['nif']." | Cantidad: ".$fila['cantidad'].
+                        echo "<br>IDCompra: ".$fila['idcompra']." | IDFlor: ".$fila['idflor']." | NIF: ".$fila['nif']." | Cantidad: ".$fila['cantidad'].
                             " | Fecha: ".$fila['fec']."<br>";
                         $fila=mysqli_fetch_array($filas);
                     }

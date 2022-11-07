@@ -1,5 +1,32 @@
 body {
     font-family:'Source Sans Pro', sans-serif;
+    text-align: center;
+}
+
+form {
+    border: 1px; 
+    border-style: solid; 
+    border-color: black;
+    border-radius: 4px;
+    padding: 100px;
+    font-size: 20px;
+    background-color: antiquewhite;
+    width: 330px;
+    display: inline-block;
+}
+
+#datos > input {
+    text-align: left;
+}
+
+#botones > input {
+    border: 0px;
+    border-style: ridge;
+    background-color: #f4f4f4;
+    border-radius: 3px;
+    font-size: 15px;
+    display: inline-block;
+    text-align: center;
 }
 
 a:link {
@@ -11,6 +38,7 @@ a:visited {
     text-decoration: none;
     color: #283a35;
 }
+
 /*#principal {
     text-align: center;
 }*/

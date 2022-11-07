@@ -33,12 +33,13 @@
             <a href="compras.php">COMPRAS</a>
         </div><br><br>
         <form action="" method="post">
+            <div id="datos">
             IDFlor: <input type="number" name="idflor"><br><br>
             Precio: <input type="number" name="precio"><br><br>
-            Cantidad: <input type="number" name="cantidad"><br><br>
-            <input type="submit" name="alta" value="Alta">
+            Cantidad: <input type="number" name="cantidad"><br><br></div>
+            <div id="botones"><input type="submit" name="alta" value="Alta">
             <input type="submit" name="baja" value="Baja">
-            <input type="submit" name="consultar" value="Consultar productos">
+            <input type="submit" name="consultar" value="Consultar productos"></div>
         </form><br>
         <?php
             include 'funcionesFloristeria.php';
@@ -90,7 +91,7 @@
                     if ($filas) {
                         $fila=mysqli_fetch_array($filas);
                         while ($fila) {
-                            echo "IDFlor: ".$fila['idflor']." | Precio: ".$fila['precio']." | Cantidad: ".$fila['cantidad']."<br>";
+                            echo "<br>IDFlor: ".$fila['idflor']." | Precio: ".$fila['precio']." | Cantidad: ".$fila['cantidad']."<br>";
                             $fila=mysqli_fetch_array($filas);
                         }
                     }

@@ -33,12 +33,13 @@
             <a href="compras.php">COMPRAS</a>
         </div><br><br>
         <form action="" method="post">
+            <div id="datos">
             NIF: <input type="text" name="nif"><br><br>
             Nombre: <input type="text" name="nombre"><br><br>
-            Cuenta bancaria: <input type="text" name="cuenta_bancaria"><br><br>
-            <input type="submit" name="alta" value="Alta">
+            Cuenta bancaria: <input type="text" name="cuenta_bancaria"><br><br></div>
+            <div id="botones"><input type="submit" name="alta" value="Alta">
             <input type="submit" name="baja" value="Baja">
-            <input type="submit" name="consultar" value="Consultar clientes">
+            <input type="submit" name="consultar" value="Consultar clientes"></div>
         </form>
         <?php
             include 'funcionesFloristeria.php';
@@ -90,7 +91,7 @@
                     if ($filas) {
                         $fila=mysqli_fetch_array($filas);
                         while ($fila) {
-                            echo "NIF: ".$fila['nif']." | Nombre: ".$fila['nombre']." | Cuenta bancaria: ".$fila['cuenta_bancaria']."<br>";
+                            echo "<br>NIF: ".$fila['nif']." | Nombre: ".$fila['nombre']." | Cuenta bancaria: ".$fila['cuenta_bancaria']."<br>";
                             $fila=mysqli_fetch_array($filas);
                         }
                     }
