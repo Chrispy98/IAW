@@ -20,7 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `practica`
 --
-
+CREATE DATABASE practica;
+USE practica;
 -- --------------------------------------------------------
 
 --
@@ -28,7 +29,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `cliente` (
-  `dni` varchar(15) NOT NULL,
+  `nif` varchar(15) NOT NULL,
   `nombre` varchar(30) DEFAULT NULL,
   `cuenta_bancaria` varchar(30) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -37,7 +38,7 @@ CREATE TABLE `cliente` (
 -- Volcado de datos para la tabla `cliente`
 --
 
-INSERT INTO `cliente` (`dni`, `nombre`, `cuenta_bancaria`) VALUES
+INSERT INTO `cliente` (`nif`, `nombre`, `cuenta_bancaria`) VALUES
 ('12345678A', 'Da Vinci', 'ES02 2309 3905 3093');
 
 -- --------------------------------------------------------
@@ -48,7 +49,7 @@ INSERT INTO `cliente` (`dni`, `nombre`, `cuenta_bancaria`) VALUES
 
 CREATE TABLE `compras` (
   `idcompra` int(11) NOT NULL,
-  `dni` varchar(15) NOT NULL,
+  `nif` varchar(15) NOT NULL,
   `idflor` int(11) NOT NULL,
   `fecha` datetime DEFAULT NULL,
   `cantidad` int(11) DEFAULT NULL
@@ -81,14 +82,14 @@ INSERT INTO `flores` (`idflor`, `precio`, `cantidad`) VALUES
 -- Indices de la tabla `cliente`
 --
 ALTER TABLE `cliente`
-  ADD PRIMARY KEY (`dni`);
+  ADD PRIMARY KEY (`nif`);
 
 --
 -- Indices de la tabla `compras`
 --
 ALTER TABLE `compras`
   ADD PRIMARY KEY (`idcompra`),
-  ADD KEY `compras_ibfk_1` (`dni`),
+  ADD KEY `compras_ibfk_1` (`nif`),
   ADD KEY `compras_ibfk_2` (`idflor`);
 
 --
@@ -115,7 +116,7 @@ ALTER TABLE `compras`
 -- Filtros para la tabla `compras`
 --
 ALTER TABLE `compras`
-  ADD CONSTRAINT `compras_ibfk_1` FOREIGN KEY (`dni`) REFERENCES `cliente` (`dni`),
+  ADD CONSTRAINT `compras_ibfk_1` FOREIGN KEY (`nif`) REFERENCES `cliente` (`nif`),
   ADD CONSTRAINT `compras_ibfk_2` FOREIGN KEY (`idflor`) REFERENCES `flores` (`idflor`);
 COMMIT;
 
