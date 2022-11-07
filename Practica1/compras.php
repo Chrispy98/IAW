@@ -28,7 +28,7 @@
         <a href="clientes.php">Clientes</a>
         <a href="compras.php">Compras</a><br><br>
         <form action="" method="post">
-            NIF: <input type="text" name="dni"><br><br>
+            NIF: <input type="text" name="nif"><br><br>
             IDFlor: <input type="number" name="idflor"><br><br>
             Cantidad: <input type="number" name="cantidad"><br><br>
             <input type="submit" name="alta" value="Alta">
@@ -39,32 +39,42 @@
         include 'funcionesFloristeria.php';
         if (isset($boton)) {
             if ($boton==0){
-                if (isset($_REQUEST['dni']) && $_REQUEST['dni']!="" 
+                if (isset($_REQUEST['nif']) && $_REQUEST['nif']!="" 
                 && isset($_REQUEST['idflor']) && $_REQUEST['idflor']!=""
                 && isset($_REQUEST['cantidad']) && $_REQUEST['cantidad']!="") {
-                    if (hayStock($_REQUEST['idflor'], $_REQUEST['cantidad'])) {
-                        if (sePuedeComprar($_REQUEST['idflor'])){
-                            $conexion=mysqli_connect("localhost", "root", "", "practica") 
-                                 or die("Problemas en la conexión");
-                            $insert="INSERT INTO compras (dni, idflor, fecha, cantidad)
-                                VALUES ('$_REQUEST[dni]', $_REQUEST[idflor], NOW(), $_REQUEST[cantidad])";
-                            mysqli_query($conexion,$insert)
-                                or die("Problemas en el insert: ".mysqli_error($conexion));
-                            mysqli_close($conexion);
-                            $conexion=mysqli_connect("localhost", "root", "", "practica") 
-                                 or die("Problemas en la conexión");
-                            $update="UPDATE flores SET cantidad=cantidad-$_REQUEST[cantidad] WHERE idFlor=$_REQUEST[idflor]";
-                            mysqli_query($conexion,$update)
-                                or die ("Problemas en el update: ".mysqli_error($conexion));
-                            mysqli_close($conexion);
-                            echo "Compra realizada correctamente";
+                    if (clienteExists($_REQUEST['nif'])){
+                        if (existeFlor($_REQUEST['idflor'])){
+                            if (hayStock($_REQUEST['idflor'], $_REQUEST['cantidad'])) {
+                                if (sePuedeComprar($_REQUEST['idflor'])){
+                                    $conexion=mysqli_connect("localhost", "root", "", "practica") 
+                                         or die("Problemas en la conexión");
+                                    $insert="INSERT INTO compras (nif, idflor, fecha, cantidad)
+                                        VALUES ('$_REQUEST[nif]', $_REQUEST[idflor], NOW(), $_REQUEST[cantidad])";
+                                    mysqli_query($conexion,$insert)
+                                        or die("Problemas en el insert: ".mysqli_error($conexion));
+                                    mysqli_close($conexion);
+                                    $conexion=mysqli_connect("localhost", "root", "", "practica") 
+                                         or die("Problemas en la conexión");
+                                    $update="UPDATE flores SET cantidad=cantidad-$_REQUEST[cantidad] WHERE idFlor=$_REQUEST[idflor]";
+                                    mysqli_query($conexion,$update)
+                                        or die ("Problemas en el update: ".mysqli_error($conexion));
+                                    mysqli_close($conexion);
+                                    echo "Compra realizada correctamente";
+                                }
+                                else {
+                                    echo "Espérese unos instantes para comprar esta flor. Perdona las molestias.";
+                                }
+                            }
+                            else {
+                                echo "No hay suficiente stock para la cantidad deseada";
+                            }
                         }
                         else {
-                            echo "Espérese unos instantes para comprar esta flor. Perdona las molestias.";
+                            echo "No existe la flor con ID ".$_REQUEST['idflor'].". Puedes consultar las flores pinchando <a href=\"almacen.php\">aquí</a>";
                         }
                     }
                     else {
-                        echo "No hay suficiente stock para la cantidad deseada";
+                        echo "Cliente no existente. Puedes darte de alta pinchando <a href=\"clientes.php\">aquí</a>";
                     }
                 }
                 else {
@@ -75,13 +85,13 @@
             else if ($boton==1){
                 $conexion=mysqli_connect("localhost","root","","practica")
                         or die("Problemas de conexión");
-                $select="SELECT idcompra, idflor, cantidad, dni, date_format(fecha, '%d-%m-%Y %H:%i:%s') AS fec FROM compras;";
+                $select="SELECT idcompra, idflor, cantidad, nif, date_format(fecha, '%d-%m-%Y %H:%i:%s') AS fec FROM compras;";
                 $filas=mysqli_query($conexion,$select) 
                     or die("Problemas en el select: ".mysqli_error($conexion));
                 if ($filas) {
                     $fila=mysqli_fetch_array($filas);
                     while ($fila) {
-                        echo "IDCompra: ".$fila['idcompra']." | IDFlor: ".$fila['idflor']." | DNI: ".$fila['dni']." | Cantidad: ".$fila['cantidad'].
+                        echo "IDCompra: ".$fila['idcompra']." | IDFlor: ".$fila['idflor']." | NIF: ".$fila['nif']." | Cantidad: ".$fila['cantidad'].
                             " | Fecha: ".$fila['fec']."<br>";
                         $fila=mysqli_fetch_array($filas);
                     }

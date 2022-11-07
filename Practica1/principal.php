@@ -15,9 +15,9 @@
         </script>
     </head>
     <body>
-        <a href="principal.html">Home</a>
-        <a href="almacen.html">Almacén</a>
-        <a href="clientes.html">Clientes</a>
-        <a href="compras.html">Compras</a>
+        <a href="principal.php">Home</a>
+        <a href="almacen.php">Almacén</a>
+        <a href="clientes.php">Clientes</a>
+        <a href="compras.php">Compras</a>
     </body>
 </html>

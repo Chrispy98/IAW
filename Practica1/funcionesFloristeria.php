@@ -21,7 +21,7 @@
     function clienteExists($cliente){
         $conexion=mysqli_connect("localhost", "root", "", "practica") 
             or die("Problemas en la conexión");
-        $select="SELECT COUNT(*) AS cont FROM cliente WHERE dni='$cliente'";
+        $select="SELECT COUNT(*) AS cont FROM cliente WHERE nif='$cliente'";
         $filas=mysqli_query($conexion,$select)
             or die("Problemas con el select: ".mysqli_error($conexion));
         if ($filas){

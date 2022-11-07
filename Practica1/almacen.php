@@ -44,13 +44,18 @@
                     if (isset($_REQUEST['idflor']) && $_REQUEST['idflor']!="" 
                     && isset($_REQUEST['precio']) && $_REQUEST['precio']!="" 
                     && isset($_REQUEST['cantidad']) && $_REQUEST['cantidad']!=""){
-                        $conexion=mysqli_connect("localhost","root","","practica")
-                            or die("Problemas de conexión");
-                        $insert="INSERT INTO flores VALUES ($_REQUEST[idflor],$_REQUEST[precio],$_REQUEST[cantidad]);";
-                        mysqli_query($conexion,$insert) 
-                            or die("Problemas en el insert: ".mysqli_error($conexion));
-                        mysqli_close($conexion);
-                        echo "Las flores han sido dadas de alta";
+                        if (!florExists($_REQUEST['idflor'])){
+                            $conexion=mysqli_connect("localhost","root","","practica")
+                                or die("Problemas de conexión");
+                            $insert="INSERT INTO flores VALUES ($_REQUEST[idflor],$_REQUEST[precio],$_REQUEST[cantidad]);";
+                            mysqli_query($conexion,$insert) 
+                                or die("Problemas en el insert: ".mysqli_error($conexion));
+                            mysqli_close($conexion);
+                            echo "Las flores han sido dadas de alta";
+                        }
+                        else {
+                            echo "Error: La flor con ID ".$_REQUEST['idflor']." ya estaba registrada.";
+                        }
                     }
                     else {
                         echo "Tienes que completar todos los campos";

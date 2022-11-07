@@ -30,7 +30,7 @@
         <a href="clientes.php">Clientes</a>
         <a href="compras.php">Compras</a><br><br>
         <form action="" method="post">
-            DNI: <input type="text" name="dni"><br><br>
+            NIF: <input type="text" name="nif"><br><br>
             Nombre: <input type="text" name="nombre"><br><br>
             Cuenta bancaria: <input type="text" name="cuenta_bancaria"><br><br>
             <input type="submit" name="alta" value="Alta">
@@ -41,48 +41,53 @@
             include 'funcionesFloristeria.php';
             if (isset($boton)){
                 if ($boton==0){
-                    if (isset($_REQUEST['dni']) && $_REQUEST['dni']!="" 
+                    if (isset($_REQUEST['nif']) && $_REQUEST['nif']!="" 
                     && isset($_REQUEST['nombre']) && $_REQUEST['nombre']!="" 
                     && isset($_REQUEST['cuenta_bancaria']) && $_REQUEST['cuenta_bancaria']!=""){
-                        $conexion=mysqli_connect("localhost","root","","practica")
-                            or die("Problemas de conexión");
-                        $insert="INSERT INTO cliente VALUES ('$_REQUEST[dni]','$_REQUEST[nombre]','$_REQUEST[cuenta_bancaria]');";
-                        mysqli_query($conexion,$insert) 
-                            or die("Problemas en el insert: ".mysqli_error($conexion));
-                        mysqli_close($conexion);
-                        echo "El cliente ha sido dado de alta";
+                        if (!clienteExists($_REQUEST['nif'])){
+                            $conexion=mysqli_connect("localhost","root","","practica")
+                                or die("Problemas de conexión");
+                            $insert="INSERT INTO cliente VALUES ('$_REQUEST[nif]','$_REQUEST[nombre]','$_REQUEST[cuenta_bancaria]');";
+                            mysqli_query($conexion,$insert) 
+                                or die("Problemas en el insert: ".mysqli_error($conexion));
+                            mysqli_close($conexion);
+                            echo "El cliente ha sido dado de alta";
+                        }
+                        else {
+                            echo "Error: El cliente con este NIF ya estaba registrado.";
+                        }
                     }
                     else {
                         echo "Tienes que completar todos los campos";
                     }
                 } else if ($boton==1){
-                    if (isset($_REQUEST['dni']) && $_REQUEST['dni']!=""){
-                        if (clienteExists($_REQUEST['dni'])){
+                    if (isset($_REQUEST['nif']) && $_REQUEST['nif']!=""){
+                        if (clienteExists($_REQUEST['nif'])){
                             $conexion=mysqli_connect("localhost","root","","practica")
                                 or die("Problemas de conexión");
-                            $delete="DELETE FROM cliente WHERE dni='$_REQUEST[dni]';";
+                            $delete="DELETE FROM cliente WHERE nif='$_REQUEST[nif]';";
                             mysqli_query($conexion,$delete) 
                                 or die("Problemas en el delete: ".mysqli_error($conexion));
                             mysqli_close($conexion);
-                            echo "Se ha borrado el cliente con DNI ".$_REQUEST['dni'];
+                            echo "Se ha borrado el cliente con nif ".$_REQUEST['nif'];
                         }
                         else {
-                                echo "No existe el cliente con DNI ".$_REQUEST['dni'];
+                                echo "No existe el cliente con nif ".$_REQUEST['nif'];
                         }
                     }
                     else {
-                        echo "Tienes que indicar el DNI del cliente.";
+                        echo "Tienes que indicar el nif del cliente.";
                     }
                 } else if ($boton==2) {
                     $conexion=mysqli_connect("localhost","root","","practica")
                         or die("Problemas de conexión");
-                    $select="SELECT dni, nombre, cuenta_bancaria FROM cliente;";
+                    $select="SELECT nif, nombre, cuenta_bancaria FROM cliente;";
                     $filas=mysqli_query($conexion,$select) 
                         or die("Problemas en el select: ".mysqli_error($conexion));
                     if ($filas) {
                         $fila=mysqli_fetch_array($filas);
                         while ($fila) {
-                            echo "DNI: ".$fila['dni']." | Nombre: ".$fila['nombre']." | Cuenta bancaria: ".$fila['cuenta_bancaria']."<br>";
+                            echo "NIF: ".$fila['nif']." | Nombre: ".$fila['nombre']." | Cuenta bancaria: ".$fila['cuenta_bancaria']."<br>";
                             $fila=mysqli_fetch_array($filas);
                         }
                     }
