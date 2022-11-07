@@ -2,7 +2,8 @@
     <meta charset="utf-8">
     <head>
         <title>Página principal · Floristería</title>
-        <h1>Página principal</h1>
+        <link rel="stylesheet" href="floristeria.css">
+        <h1 id="principal">Página principal</h1>
         <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
         <meta http-equiv="Pragma" content="no-cache" />
         <meta http-equiv="Expires" content="0" />
@@ -15,9 +16,11 @@
         </script>
     </head>
     <body>
-        <a href="principal.php">Home</a>
-        <a href="almacen.php">Almacén</a>
-        <a href="clientes.php">Clientes</a>
-        <a href="compras.php">Compras</a>
+        <div id="links">
+            <a href="principal.php"><img id="homePic" src="pics/home-page.png"></a>
+            <a href="almacen.php">ALMACÉN</a>
+            <a href="clientes.php">CLIENTES</a>
+            <a href="compras.php">COMPRAS</a>
+        </div>    
     </body>
 </html>

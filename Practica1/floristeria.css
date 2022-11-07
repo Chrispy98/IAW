@@ -1,0 +1,36 @@
+body {
+    font-family:'Source Sans Pro', sans-serif;
+}
+
+a:link {
+    text-decoration: none;
+    color: #283a35;
+}
+      
+a:visited {
+    text-decoration: none;
+    color: #283a35;
+}
+/*#principal {
+    text-align: center;
+}*/
+h1 {
+    text-align: center;
+}
+
+#links {
+    /* text-align: center; */
+    display: inline;
+    word-spacing: 20px;
+    font-size: 40px;
+    border: 1px solid black;
+    color: #283a35;
+    letter-spacing: 1px;
+}
+
+#homePic {
+    width: 40px;
+    position: relative;
+    top: 8px;
+    left: 5px;
+}
