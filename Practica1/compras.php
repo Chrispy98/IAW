@@ -47,7 +47,7 @@
                 && isset($_REQUEST['idflor']) && $_REQUEST['idflor']!=""
                 && isset($_REQUEST['cantidad']) && $_REQUEST['cantidad']!="") {
                     if (clienteExists($_REQUEST['nif'])){
-                        if (existeFlor($_REQUEST['idflor'])){
+                        if (florExists($_REQUEST['idflor'])){
                             if (hayStock($_REQUEST['idflor'], $_REQUEST['cantidad'])) {
                                 if (sePuedeComprar($_REQUEST['idflor'])){
                                     $conexion=mysqli_connect("localhost", "root", "", "practica") 
@@ -66,19 +66,20 @@
                                     echo "Compra realizada correctamente";
                                 }
                                 else {
-                                    echo "Espérese unos instantes para comprar esta flor. Perdona las molestias.";
+                                    echo "<br>Espérese unos instantes para comprar esta flor. Perdona las molestias.";
                                 }
                             }
                             else {
-                                echo "No hay suficiente stock para la cantidad deseada";
+                                echo "<br>No hay suficiente stock para la cantidad deseada";
                             }
                         }
                         else {
-                            echo "No existe la flor con ID ".$_REQUEST['idflor'].". Puedes consultar las flores pinchando <a href=\"almacen.php\">aquí</a>";
+                            echo "<br>No existe la flor con ID ".$_REQUEST['idflor'].". Puedes consultar las flores pinchando 
+                                <a href=\"almacen.php\"><span>aquí</span></a>";
                         }
                     }
                     else {
-                        echo "Cliente no existente. Puedes darte de alta pinchando <a href=\"clientes.php\">aquí</a>";
+                        echo "<br>Cliente no existente. Puedes darte de alta pinchando <a href=\"clientes.php\"><span>aquí</span></a>";
                     }
                 }
                 else {

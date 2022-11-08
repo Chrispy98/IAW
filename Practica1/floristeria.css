@@ -62,3 +62,8 @@ h1 {
     top: 8px;
     left: 5px;
 }
+
+span {
+    text-decoration: underline;
+    color: cadetblue;
+}
