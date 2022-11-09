@@ -3,7 +3,7 @@
     <head>
         <title>Compras · Floristería</title>
         <link rel="stylesheet" href="floristeria.css">
-        <h1>Compras</h1>
+         <!--<h1>Compras</h1>-->
         <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
         <meta http-equiv="Pragma" content="no-cache" />
         <meta http-equiv="Expires" content="0" />
@@ -25,10 +25,10 @@
     ?>
     <body>
         <div id="links">
-            <a href="principal.php"><img id="homePic" src="pics/home-page.png"></a>
-            <a href="almacen.php">ALMACÉN</a>
-            <a href="clientes.php">CLIENTES</a>
-            <a href="compras.php">COMPRAS</a>
+            <div class="links"><a href="principal.php"><img id="homePic" src="pics/home-page.png"></a></div>
+            <div class="links"><a href="almacen.php">ALMACÉN</a></div>
+            <div class="links"><a href="clientes.php">CLIENTES</a></div>
+            <div id="compras" class="links"><a href="compras.php">COMPRAS</a></div>
         </div><br><br>
         <form action="" method="post">
             <div id="datos">
@@ -63,7 +63,7 @@
                                     mysqli_query($conexion,$update)
                                         or die ("Problemas en el update: ".mysqli_error($conexion));
                                     mysqli_close($conexion);
-                                    echo "Compra realizada correctamente";
+                                    echo "<br>Compra realizada correctamente";
                                 }
                                 else {
                                     echo "<br>Espérese unos instantes para comprar esta flor. Perdona las molestias.";
@@ -83,7 +83,7 @@
                     }
                 }
                 else {
-                    echo "Tienes que completar todos los campos";
+                    echo "<br>Tienes que completar todos los campos";
                 }
             } 
             

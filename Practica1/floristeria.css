@@ -1,16 +1,19 @@
 body {
     font-family:'Source Sans Pro', sans-serif;
     text-align: center;
+    background-color: #CFCFEA;
 }
 
 form {
+    position: relative;
+    top: 30px;
     border: 1px; 
     border-style: solid; 
     border-color: black;
     border-radius: 4px;
-    padding: 100px;
+    padding: 70px;
     font-size: 20px;
-    background-color: antiquewhite;
+    background-color: #dab6c4;
     width: 330px;
     display: inline-block;
 }
@@ -22,11 +25,17 @@ form {
 #botones > input {
     border: 0px;
     border-style: ridge;
-    background-color: #f4f4f4;
+    color: #f4f4f4;
     border-radius: 3px;
     font-size: 15px;
     display: inline-block;
     text-align: center;
+    padding: 6px;
+    background-color: black;
+}
+
+#botones > input:hover {
+    cursor: pointer;
 }
 
 a:link {
@@ -49,11 +58,10 @@ h1 {
 #links {
     /* text-align: center; */
     display: inline;
-    word-spacing: 20px;
-    font-size: 40px;
-    border: 1px solid black;
-    color: #283a35;
+    font-size: 23px;
+    border: 1px solid #CFCFEA;
     letter-spacing: 1px;
+    padding: 8px;
 }
 
 #homePic {
@@ -67,3 +75,40 @@ span {
     text-decoration: underline;
     color: cadetblue;
 }
+
+.links {
+    position: relative;
+    top: 6px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    padding-left: 15px;
+    padding-right: 15px;
+    display: inline;
+    width: 50px;
+}
+
+#home {
+    left: 6px;
+    padding-left: 3px;
+    padding-right: 15px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    display: inherit;
+    background-color: #BEEE62 !important;
+}
+
+#almacen {
+    display: inherit;
+    background-color: #BEEE62 !important;
+}
+
+#clientes {
+    display: inherit;
+    background-color: #BEEE62 !important;
+}
+
+#compras {
+    display: inherit;
+    background-color: #BEEE62 !important;
+}
+
