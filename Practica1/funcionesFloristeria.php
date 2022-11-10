@@ -74,4 +74,18 @@
             }
         }
     }
+
+    function getPrice ($id){
+        $conexion=mysqli_connect("localhost", "root", "", "practica") 
+            or die("Problemas en la conexión");
+        $select="SELECT precio FROM flores WHERE idFlor=$id;";
+        $filas=mysqli_query($conexion,$select)
+            or die("Problemas con el select: ".mysqli_error($conexion));
+        if ($filas){
+            $fila=mysqli_fetch_array($filas);
+            $precio=$fila['precio'];
+            mysqli_close($conexion);
+            return $precio;
+        }
+    }
 ?>

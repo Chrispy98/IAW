@@ -52,7 +52,8 @@ CREATE TABLE `compras` (
   `nif` varchar(15) NOT NULL,
   `idflor` int(11) NOT NULL,
   `fecha` datetime DEFAULT NULL,
-  `cantidad` int(11) DEFAULT NULL
+  `cantidad` int(11) DEFAULT NULL,
+  `importe_total` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------

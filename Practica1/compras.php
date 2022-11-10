@@ -50,10 +50,12 @@
                         if (florExists($_REQUEST['idflor'])){
                             if (hayStock($_REQUEST['idflor'], $_REQUEST['cantidad'])) {
                                 if (sePuedeComprar($_REQUEST['idflor'])){
+                                    $precio=getPrice($_REQUEST['idflor']);
+                                    $importeTotal=$precio*$_REQUEST['cantidad'];
                                     $conexion=mysqli_connect("localhost", "root", "", "practica") 
                                          or die("Problemas en la conexión");
-                                    $insert="INSERT INTO compras (nif, idflor, fecha, cantidad)
-                                        VALUES ('$_REQUEST[nif]', $_REQUEST[idflor], NOW(), $_REQUEST[cantidad])";
+                                    $insert="INSERT INTO compras (nif, idflor, fecha, cantidad, importe_total)
+                                        VALUES ('$_REQUEST[nif]', $_REQUEST[idflor], NOW(), $_REQUEST[cantidad], $importeTotal)";
                                     mysqli_query($conexion,$insert)
                                         or die("Problemas en el insert: ".mysqli_error($conexion));
                                     mysqli_close($conexion);
@@ -63,44 +65,45 @@
                                     mysqli_query($conexion,$update)
                                         or die ("Problemas en el update: ".mysqli_error($conexion));
                                     mysqli_close($conexion);
-                                    echo "<br>Compra realizada correctamente";
+                                    echo "<br><br>Compra realizada correctamente";
                                 }
                                 else {
-                                    echo "<br>Espérese unos instantes para comprar esta flor. Perdona las molestias.";
+                                    echo "<br><br>Espérese unos instantes para comprar esta flor. Perdona las molestias.";
                                 }
                             }
                             else {
-                                echo "<br>No hay suficiente stock para la cantidad deseada";
+                                echo "<br><br>No hay suficiente stock para la cantidad deseada";
                             }
                         }
                         else {
-                            echo "<br>No existe la flor con ID ".$_REQUEST['idflor'].". Puedes consultar las flores pinchando 
+                            echo "<br><br>No existe la flor con ID ".$_REQUEST['idflor'].". Puedes consultar las flores pinchando 
                                 <a href=\"almacen.php\"><span>aquí</span></a>";
                         }
                     }
                     else {
-                        echo "<br>Cliente no existente. Puedes darte de alta pinchando <a href=\"clientes.php\"><span>aquí</span></a>";
+                        echo "<br><br>Cliente no existente. Puedes darte de alta pinchando <a href=\"clientes.php\"><span>aquí</span></a>";
                     }
                 }
                 else {
-                    echo "<br>Tienes que completar todos los campos";
+                    echo "<br><br>Tienes que completar todos los campos";
                 }
             } 
             
             else if ($boton==1){
                 $conexion=mysqli_connect("localhost","root","","practica")
                         or die("Problemas de conexión");
-                $select="SELECT idcompra, idflor, cantidad, nif, date_format(fecha, '%d-%m-%Y %H:%i:%s') AS fec FROM compras;";
+                $select="SELECT idcompra, idflor, cantidad, nif, date_format(fecha, '%d-%m-%Y %H:%i:%s') AS fec, importe_total FROM compras;";
                 $filas=mysqli_query($conexion,$select) 
                     or die("Problemas en el select: ".mysqli_error($conexion));
+                echo "<table><tr><th>IDCompra</th><th>IDFlor</th><th>NIF</th><th>Cantidad</th><th>Fecha</th><th>Importe total</th></tr>";
                 if ($filas) {
                     $fila=mysqli_fetch_array($filas);
                     while ($fila) {
-                        echo "<br>IDCompra: ".$fila['idcompra']." | IDFlor: ".$fila['idflor']." | NIF: ".$fila['nif']." | Cantidad: ".$fila['cantidad'].
-                            " | Fecha: ".$fila['fec']."<br>";
+                        echo "<tr><td>".$fila['idcompra']."</td><td>".$fila['idflor']."</td><td>".$fila['nif']."</td><td>".$fila['cantidad']."</td><td>".$fila['fec']."</td><td>".$fila['importe_total']."</td></tr>";
                         $fila=mysqli_fetch_array($filas);
                     }
                 }
+                echo "</table>";
                 mysqli_close($conexion);
             }
         }

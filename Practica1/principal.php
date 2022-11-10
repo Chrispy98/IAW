@@ -21,6 +21,9 @@
             <div class="links"><a href="almacen.php">ALMACÉN</a></div>
             <div class="links"><a href="clientes.php">CLIENTES</a></div>
             <div class="links"><a href="compras.php">COMPRAS</a></div>
-        </div>    
+        </div>   
+        <br>
+        <br>
+        <p> Bienvenido a la floristería de Christian</p> 
     </body>
 </html>

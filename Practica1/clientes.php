@@ -58,11 +58,11 @@
                             echo "El cliente ha sido dado de alta";
                         }
                         else {
-                            echo "Error: El cliente con este NIF ya estaba registrado.";
+                            echo "<br><br>Error: El cliente con este NIF ya estaba registrado.";
                         }
                     }
                     else {
-                        echo "Tienes que completar todos los campos";
+                        echo "<br><br>Tienes que completar todos los campos";
                     }
                 } else if ($boton==1){
                     if (isset($_REQUEST['nif']) && $_REQUEST['nif']!=""){
@@ -73,10 +73,10 @@
                             mysqli_query($conexion,$delete) 
                                 or die("Problemas en el delete: ".mysqli_error($conexion));
                             mysqli_close($conexion);
-                            echo "Se ha borrado el cliente con nif ".$_REQUEST['nif'];
+                            echo "<br><br>Se ha borrado el cliente con nif ".$_REQUEST['nif'];
                         }
                         else {
-                                echo "No existe el cliente con nif ".$_REQUEST['nif'];
+                                echo "<br><br>No existe el cliente con nif ".$_REQUEST['nif'];
                         }
                     }
                     else {
@@ -88,14 +88,16 @@
                     $select="SELECT nif, nombre, cuenta_bancaria FROM cliente;";
                     $filas=mysqli_query($conexion,$select) 
                         or die("Problemas en el select: ".mysqli_error($conexion));
+                    echo "<table><tr><th>NIF</th><th>Nombre</th><th>Cuenta bancaria</th></tr>";
                     if ($filas) {
                         $fila=mysqli_fetch_array($filas);
                         while ($fila) {
-                            echo "<br>NIF: ".$fila['nif']." | Nombre: ".$fila['nombre']." | Cuenta bancaria: ".$fila['cuenta_bancaria']."<br>";
+                            echo "<tr><td>".$fila['nif']."</td><td>".$fila['nombre']."</td><td>".$fila['cuenta_bancaria']."</td></tr>";
                             $fila=mysqli_fetch_array($filas);
                         }
                     }
                     mysqli_close($conexion);
+                    echo "</table>";
                 }
             }
         ?>

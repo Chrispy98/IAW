@@ -55,14 +55,14 @@
                             mysqli_query($conexion,$insert) 
                                 or die("Problemas en el insert: ".mysqli_error($conexion));
                             mysqli_close($conexion);
-                            echo "Las flores han sido dadas de alta";
+                            echo "<br><br>Las flores han sido dadas de alta";
                         }
                         else {
-                            echo "Error: La flor con ID ".$_REQUEST['idflor']." ya estaba registrada.";
+                            echo "<br><br>Error: La flor con ID ".$_REQUEST['idflor']." ya estaba registrada.";
                         }
                     }
                     else {
-                        echo "Tienes que completar todos los campos";
+                        echo "<br><br>Tienes que completar todos los campos";
                     }
                 } else if ($boton==1){
                     if (isset($_REQUEST['idflor']) && $_REQUEST['idflor']!=""){
@@ -73,14 +73,14 @@
                             mysqli_query($conexion,$delete) 
                                 or die("Problemas en el delete: ".mysqli_error($conexion));
                             mysqli_close($conexion);
-                            echo "Se ha borrado la flor con ID ".$_REQUEST['idflor'];
+                            echo "<br><br>Se ha borrado la flor con ID ".$_REQUEST['idflor'];
                         }
                         else {
-                            echo "No existe la flor con ID ".$_REQUEST['idflor'];
+                            echo "<br><br>No existe la flor con ID ".$_REQUEST['idflor'];
                         }
                     }
                     else {
-                        echo "Tienes que indicar el ID de la flor.";
+                        echo "<br><br>Tienes que indicar el ID de la flor.";
                     }
                 } else if ($boton==2) {
                     $conexion=mysqli_connect("localhost","root","","practica")
@@ -88,14 +88,16 @@
                     $select="SELECT idflor, precio, cantidad FROM flores;";
                     $filas=mysqli_query($conexion,$select) 
                         or die("Problemas en el select: ".mysqli_error($conexion));
+                    echo "<table><tr><th>IDCompra</th><th>Precio</th><th>Cantidad</th></tr>";
                     if ($filas) {
                         $fila=mysqli_fetch_array($filas);
                         while ($fila) {
-                            echo "<br>IDFlor: ".$fila['idflor']." | Precio: ".$fila['precio']." | Cantidad: ".$fila['cantidad']."<br>";
+                            echo "<tr><td>".$fila['idflor']."</td><td>".$fila['precio']."</td><td>".$fila['cantidad']."</td></tr>";
                             $fila=mysqli_fetch_array($filas);
                         }
                     }
                     mysqli_close($conexion);
+                    echo "</table>";
                 }
             }
         ?>

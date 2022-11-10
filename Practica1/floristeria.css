@@ -112,3 +112,22 @@ span {
     background-color: #BEEE62 !important;
 }
 
+table, td, th {
+    border: 1px solid white;
+    border-collapse: collapse;
+}
+th, td {
+    background-color: #CACFFF;
+    padding: 8px;
+} 
+
+table {
+   position: relative;
+   top: 40px; 
+   margin-left: auto;
+   margin-right: auto;
+}
+
+td {
+    text-align: center;
+}
