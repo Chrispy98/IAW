@@ -6,12 +6,12 @@ body {
 
 form {
     position: relative;
-    top: 30px;
+    top: 60px;
     border: 1px; 
-    border-style: solid; 
-    border-color: black;
+    border-style: groove; 
+    border-color: #dab6c4;
     border-radius: 4px;
-    padding: 70px;
+    padding: 115px;
     font-size: 20px;
     background-color: #dab6c4;
     width: 330px;
@@ -58,7 +58,7 @@ h1 {
 #links {
     /* text-align: center; */
     display: inline;
-    font-size: 23px;
+    font-size: 43px;
     border: 1px solid #CFCFEA;
     letter-spacing: 1px;
     padding: 8px;
@@ -78,7 +78,7 @@ span {
 
 .links {
     position: relative;
-    top: 6px;
+    top: 20px;
     padding-top: 12px;
     padding-bottom: 12px;
     padding-left: 15px;
