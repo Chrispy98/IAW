@@ -55,32 +55,37 @@
                             mysqli_query($conexion,$insert) 
                                 or die("Problemas en el insert: ".mysqli_error($conexion));
                             mysqli_close($conexion);
-                            echo "<br><br>Las flores han sido dadas de alta";
+                            echo "<p id=\"message\">Las flores han sido dadas de alta</p>";
                         }
                         else {
-                            echo "<br><br>Error: La flor con ID ".$_REQUEST['idflor']." ya estaba registrada.";
+                            echo "<p id=\"message\">Error: La flor con ID ".$_REQUEST['idflor']." ya estaba registrada.</p>";
                         }
                     }
                     else {
-                        echo "<br><br>Tienes que completar todos los campos";
+                        echo "<p id=\"message\">Tienes que completar todos los campos</p>";
                     }
                 } else if ($boton==1){
                     if (isset($_REQUEST['idflor']) && $_REQUEST['idflor']!=""){
                         if (florExists($_REQUEST['idflor'])){
-                            $conexion=mysqli_connect("localhost","root","","practica")
-                                or die("Problemas de conexión");
-                            $delete="DELETE FROM flores WHERE idflor=$_REQUEST[idflor];";
-                            mysqli_query($conexion,$delete) 
-                                or die("Problemas en el delete: ".mysqli_error($conexion));
-                            mysqli_close($conexion);
-                            echo "<br><br>Se ha borrado la flor con ID ".$_REQUEST['idflor'];
+                            if (florNoComprada($_REQUEST['idflor'])){
+                                $conexion=mysqli_connect("localhost","root","","practica")
+                                    or die("Problemas de conexión");
+                                $delete="DELETE FROM flores WHERE idflor=$_REQUEST[idflor];";
+                                mysqli_query($conexion,$delete) 
+                                    or die("Problemas en el delete: ".mysqli_error($conexion));
+                                mysqli_close($conexion);
+                                echo "<p id=\"message\">Se ha borrado la flor con ID ".$_REQUEST['idflor']."</p>";
+                            }
+                            else {
+                                echo "<p id=\"message\">Error: No se puede dar de baja a la flor con id ".$_REQUEST['idflor']." porque ya se ha realizado una compra de esta.</p>";
+                            }
                         }
                         else {
-                            echo "<br><br>No existe la flor con ID ".$_REQUEST['idflor'];
+                            echo "<p id=\"message\">No existe la flor con ID ".$_REQUEST['idflor']."</p>";
                         }
                     }
                     else {
-                        echo "<br><br>Tienes que indicar el ID de la flor.";
+                        echo "<p id=\"message\">Tienes que indicar el ID de la flor.</p>";
                     }
                 } else if ($boton==2) {
                     $conexion=mysqli_connect("localhost","root","","practica")

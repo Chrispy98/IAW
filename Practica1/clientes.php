@@ -55,32 +55,37 @@
                             mysqli_query($conexion,$insert) 
                                 or die("Problemas en el insert: ".mysqli_error($conexion));
                             mysqli_close($conexion);
-                            echo "El cliente ha sido dado de alta";
+                            echo "<p id=\"message\">El cliente ha sido dado de alta</p>";
                         }
                         else {
-                            echo "<br><br>Error: El cliente con este NIF ya estaba registrado.";
+                            echo "<p id=\"message\">Error: El cliente con este NIF ya estaba registrado.</p>";
                         }
                     }
                     else {
-                        echo "<br><br>Tienes que completar todos los campos";
+                        echo "<p id=\"message\">Tienes que completar todos los campos</p>";
                     }
                 } else if ($boton==1){
                     if (isset($_REQUEST['nif']) && $_REQUEST['nif']!=""){
                         if (clienteExists($_REQUEST['nif'])){
-                            $conexion=mysqli_connect("localhost","root","","practica")
-                                or die("Problemas de conexión");
-                            $delete="DELETE FROM cliente WHERE nif='$_REQUEST[nif]';";
-                            mysqli_query($conexion,$delete) 
-                                or die("Problemas en el delete: ".mysqli_error($conexion));
-                            mysqli_close($conexion);
-                            echo "<br><br>Se ha borrado el cliente con nif ".$_REQUEST['nif'];
+                            if (clienteSinCompra($_REQUEST['nif'])){
+                                $conexion=mysqli_connect("localhost","root","","practica")
+                                    or die("Problemas de conexión");
+                                $delete="DELETE FROM cliente WHERE nif='$_REQUEST[nif]';";
+                                mysqli_query($conexion,$delete) 
+                                    or die("Problemas en el delete: ".mysqli_error($conexion));
+                                mysqli_close($conexion);
+                                echo "<p id=\"message\">Se ha borrado el cliente con nif ".$_REQUEST['nif']."</p>";
+                            }
+                            else {
+                                echo "<p id=\"message\">Error: No se puede dar de baja al cliente con nif ".$_REQUEST['nif']." porque ya ha realizado una compra.</p>";
+                            }
                         }
                         else {
-                                echo "<br><br>No existe el cliente con nif ".$_REQUEST['nif'];
+                                echo "<p id=\"message\">No existe el cliente con nif ".$_REQUEST['nif']."</p>";
                         }
                     }
                     else {
-                        echo "Tienes que indicar el nif del cliente.";
+                        echo "<p id=\"message\">Tienes que indicar el nif del cliente.</p>";
                     }
                 } else if ($boton==2) {
                     $conexion=mysqli_connect("localhost","root","","practica")

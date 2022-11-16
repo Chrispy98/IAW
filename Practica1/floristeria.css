@@ -133,3 +133,8 @@ table {
 td {
     text-align: center;
 }
+
+#message {
+    position: relative;
+    top: 50px;
+}

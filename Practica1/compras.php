@@ -65,27 +65,27 @@
                                     mysqli_query($conexion,$update)
                                         or die ("Problemas en el update: ".mysqli_error($conexion));
                                     mysqli_close($conexion);
-                                    echo "<br><br>Compra realizada correctamente";
+                                    echo "<p id=\"message\">Compra realizada correctamente</p>";
                                 }
                                 else {
-                                    echo "<br><br>Espérese unos instantes para comprar esta flor. Perdona las molestias.";
+                                    echo "<p id=\"message\">Espérese unos instantes para comprar esta flor. Perdona las molestias.</p>";
                                 }
                             }
                             else {
-                                echo "<br><br>No hay suficiente stock para la cantidad deseada";
+                                echo "<p id=\"message\">No hay suficiente stock para la cantidad deseada</p>";
                             }
                         }
                         else {
-                            echo "<br><br>No existe la flor con ID ".$_REQUEST['idflor'].". Puedes consultar las flores pinchando 
-                                <a href=\"almacen.php\"><span>aquí</span></a>";
+                            echo "<p id=\"message\">No existe la flor con ID ".$_REQUEST['idflor'].". Puedes consultar las flores pinchando 
+                                <a href=\"almacen.php\"><span>aquí</span></a></p>";
                         }
                     }
                     else {
-                        echo "<br><br>Cliente no existente. Puedes darte de alta pinchando <a href=\"clientes.php\"><span>aquí</span></a>";
+                        echo "<p id=\"message\">Cliente no existente. Puedes darte de alta pinchando <a href=\"clientes.php\"><span>aquí</span></a></p>";
                     }
                 }
                 else {
-                    echo "<br><br>Tienes que completar todos los campos";
+                    echo "<p id=\"message\">Tienes que completar todos los campos</p>";
                 }
             } 
             
