@@ -20,10 +20,10 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `practica`
 --
+DROP DATABASE IF EXISTS practica;
 CREATE DATABASE practica;
 USE practica;
 -- --------------------------------------------------------
-
 --
 -- Estructura de tabla para la tabla `cliente`
 --
@@ -33,13 +33,6 @@ CREATE TABLE `cliente` (
   `nombre` varchar(30) DEFAULT NULL,
   `cuenta_bancaria` varchar(30) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Volcado de datos para la tabla `cliente`
---
-
-INSERT INTO `cliente` (`nif`, `nombre`, `cuenta_bancaria`) VALUES
-('12345678A', 'Da Vinci', 'ES02 2309 3905 3093');
 
 -- --------------------------------------------------------
 
@@ -67,17 +60,6 @@ CREATE TABLE `flores` (
   `precio` int(11) DEFAULT NULL,
   `cantidad` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Volcado de datos para la tabla `flores`
---
-
-INSERT INTO `flores` (`idflor`, `precio`, `cantidad`) VALUES
-(1998, 42, 30);
-
---
--- Índices para tablas volcadas
---
 
 --
 -- Indices de la tabla `cliente`

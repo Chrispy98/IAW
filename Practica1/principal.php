@@ -15,7 +15,7 @@
             }
         </script>
     </head>
-    <body>
+    <body id="bodPrinc">
         <div id="links">
             <div id="home" class="links"><a href="principal.php"><img id="homePic" src="pics/home-page.png"></a></div>
             <div class="links"><a href="almacen.php">ALMACÉN</a></div>
@@ -24,6 +24,6 @@
         </div>   
         <br>
         <br>
-        <p> Bienvenido a la floristería de Christian</p> 
+        <p id="welcome"> Bienvenido a la floristería de Christian</p> 
     </body>
 </html>

@@ -93,7 +93,7 @@
                     $select="SELECT nif, nombre, cuenta_bancaria FROM cliente;";
                     $filas=mysqli_query($conexion,$select) 
                         or die("Problemas en el select: ".mysqli_error($conexion));
-                    echo "<table><tr><th>NIF</th><th>Nombre</th><th>Cuenta bancaria</th></tr>";
+                    echo "<table id=\"tClientes\"><tr><th>NIF</th><th>Nombre</th><th>Cuenta bancaria</th></tr>";
                     if ($filas) {
                         $fila=mysqli_fetch_array($filas);
                         while ($fila) {

@@ -93,7 +93,7 @@
                     $select="SELECT idflor, precio, cantidad FROM flores;";
                     $filas=mysqli_query($conexion,$select) 
                         or die("Problemas en el select: ".mysqli_error($conexion));
-                    echo "<table><tr><th>IDCompra</th><th>Precio</th><th>Cantidad</th></tr>";
+                    echo "<table id=\"tAlmacen\"><tr><th>IDCompra</th><th>Precio</th><th>Cantidad</th></tr>";
                     if ($filas) {
                         $fila=mysqli_fetch_array($filas);
                         while ($fila) {

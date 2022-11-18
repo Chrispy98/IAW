@@ -95,7 +95,7 @@
                 $select="SELECT idcompra, idflor, cantidad, nif, date_format(fecha, '%d-%m-%Y %H:%i:%s') AS fec, importe_total FROM compras;";
                 $filas=mysqli_query($conexion,$select) 
                     or die("Problemas en el select: ".mysqli_error($conexion));
-                echo "<table><tr><th>IDCompra</th><th>IDFlor</th><th>NIF</th><th>Cantidad</th><th>Fecha</th><th>Importe total</th></tr>";
+                echo "<table id=\"tCompras\"><tr><th>IDCompra</th><th>IDFlor</th><th>NIF</th><th>Cantidad</th><th>Fecha</th><th>Importe</th></tr>";
                 if ($filas) {
                     $fila=mysqli_fetch_array($filas);
                     while ($fila) {
