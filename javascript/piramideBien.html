@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function puntos(puntos1, puntos2){
+            while (puntos1<50 || puntos2<50){
+                    puntoPara=Math.random(1,2);
+                    juegoPara1=false;
+                    let ventaja1=false;
+                    let ventaja2=false;
+                    if (puntoPara==1){
+                        if (puntos1==30){
+                            puntos1+=10;
+                            document.write(jugador1 + " " + puntos1 + "-" + puntos2 + " " + jugador1);
+                            document.write("<br>");
+                        }
+                        
+                        else if (puntos1==40){
+                            if (puntos2==40){
+                                if (!ventaja2){
+                                    puntos1+=5;
+                                    ventaja1=true;
+                                    document.write(jugador1 + " ADV" + "-" + puntos2 + " " + jugador1);
+                                    document.write("<br>");
+                                }
+                                else {
+                                    puntos2-=5;
+                                    ventaja2=false;
+                                    document.write(jugador1 + " " + puntos1 + "-" + puntos2 + " " + jugador1);
+                                    document.write("<br>");
+                                }
+                            }
+                            else {
+                                puntos1+=10;
+                                juegoPara1=true;
+                                document.write("Juego para " + jugador1);
+                                document.write("<br>");
+                            }
+                        }
+
+                        else {
+                            puntos1+=15;
+                            document.write(jugador1 + " " + puntos1 + "-" + puntos2 + " " + jugador1);
+                            document.write("<br>");
+                        }
+                    }
+                    else {
+                        if (puntos2==30){
+                            puntos2+=10;
+                            document.write(jugador1 + " " + puntos1 + "-" + puntos2 + " " + jugador1);
+                            document.write("<br>");
+                        }
+                        
+                        if (puntos2==40){
+                            if (puntos1==40){
+                                if (!ventaja1){
+                                    puntos2+=5;
+                                    ventaja2=true;
+                                    document.write(jugador1 + " " + puntos1 + "-" + " ADV" + jugador1);
+                                    document.write("<br>");
+                                }
+                                else {
+                                    puntos1-=5;
+                                    ventaja1=false;
+                                    document.write(jugador1 + " " + puntos1 + "-" + puntos2 + " " + jugador1);
+                                    document.write("<br>");
+                                }
+                            }
+                            else {
+                                puntos2+=10;
+                                document.write("Juego para " + jugador2);
+                                document.write("<br>");
+                            }
+                        }
+
+                        else {
+                            puntos2+=15;
+                            document.write(jugador1 + " " + puntos1 + "-" + puntos2 + " " + jugador1);
+                            document.write("<br>");
+                        }
+                    }
+                }
+                return juegoPara1;
+        }
+
+        jugador1=prompt("Nombre del jugador 1");
+        jugador2=prompt("Nombre del jugador 2");
+        sets1=0;
+        sets2=0;
+        while (sets1<4 || sets2<4) {
+            juegos1=0;
+            juegos2=0;
+            while (juegos1<7 || juegos2<7){
+                puntos1=0;
+                puntos2=0;
+                resJuego=puntos(puntos1, puntos2);
+                if (res){
+                    juegos1++;
+                }
+                else {
+                    juegos2++;
+                }
+                if ((juegos1==6 || juegos2==6) && Math.round(juegos1-juegos2)<2){
+                    while (juegos1<8 ||juegos2<8){
+                        puntos1=0;
+                        puntos2=0;
+                        resJuego=puntos(puntos1, puntos2);
+                        if (res){
+                            juegos1++;
+                        }
+                        else {
+                            juegos2++;
+                        }
+                    }
+                }
+            }
+            setPara=Math.max(juegos1,juegos2);
+            if (setPara==juegos1){
+                document.write("Set para " + jugador1);
+                document.write("<br>");
+                sets1++;
+            }
+            else {
+                document.write("Set para " + jugador2);
+                document.write("<br>");
+                sets2++;
+            }
+        }
+        partidoPara=Math.max(sets1,sets2);
+        if (partidoPara==sets1){
+                document.write("Partido para " + jugador1);
+                document.write("<br>");
+                sets1++;
+            }
+            else {
+                document.write("Partido para " + jugador2);
+                document.write("<br>");
+                sets2++;
+        }
+    </script>
+</body>
+</html>

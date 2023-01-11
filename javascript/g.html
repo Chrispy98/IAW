@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let sphere = "";
+        const size = 30;
+        for(let i = -size; i <= size; i++){
+            let row = "";
+            for(let j = -size; j <= size; j++){
+                if(Math.sqrt(i*i + j*j) <= size) 
+                    row += "*";
+                else 
+                    row += " ";
+            }
+            sphere += row + "\n";
+        document.write(row,"<br>");
+        }
+        console.log(sphere);
+    </script>
+</body>
+</html>  

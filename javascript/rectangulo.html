@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function rectangulo(height, width, rel){
+            for (let i=0; i<height; i++){
+                for (let j=0; j<width; j++){
+                    document.write(rel);
+                }
+                document.write("<br>");
+            }
+        }
+        let altura=parseInt(prompt("Indica la altura del rectángulo"));
+        let anchura=parseInt(prompt("Indica la anchura del rectángulo"));
+        let relleno=prompt("¿Qué relleno quieres para el rectángulo?");
+        rectangulo(altura, anchura, relleno);
+    </script>
+</body>
+</html>
