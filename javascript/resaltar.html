@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table style="border: 1px black solid">
+        <tr id="uno">
+            <td>
+                <button onclick="noResaltar()">No resaltar</button>
+                <button onclick="resaltar()">Resaltar</button>
+            </td>
+            <td>
+                <p>I'm a Barbie girl. In a Barbie wooooooorld</p>
+            </td>
+        </tr>
+        <tr id="dos">
+            <td>
+                <button onclick="noResaltarBis()">No resaltar</button>
+                <button onclick="resaltarBis()">Resaltar</button>
+            </td>
+            <td>
+                <p>Nanananananananananananananananananana</p>
+            </td>
+        </tr>
+    </table>
+    <script>
+        function noResaltar(){
+            document.getElementById('uno').innerHTML="<td>\
+                <button onclick=\"noResaltar()\">No resaltar</button>\
+                <button onclick=\"resaltar()\">Resaltar</button>\
+            </td>\
+            <td>\
+                <p>I'm a Barbie girl. In a Barbie wooooooorld</p>\
+            </td>";
+        }
+
+        function resaltar(){
+            document.getElementById('uno').innerHTML="<td>\
+                <button onclick=\"noResaltar()\">No resaltar</button>\
+                <button onclick=\"resaltar()\">Resaltar</button>\
+            </td>\
+            <td style=\"background-color:yellow;\">\
+                <p>I'm a Barbie girl. In a Barbie wooooooorld</p>\
+            </td>";
+        }
+
+        function noResaltarBis(){
+            document.getElementById('dos').innerHTML="<td>\
+                <button onclick=\"noResaltarBis()\">No resaltar</button>\
+                <button onclick=\"resaltarBis()\">Resaltar</button>\
+            </td>\
+            <td>\
+                <p>Nanananananananananananananananananana</p>\
+            </td>";
+        }
+
+        function resaltarBis(){
+            document.getElementById('dos').innerHTML="<td>\
+                <button onclick=\"noResaltarBis()\">No resaltar</button>\
+                <button onclick=\"resaltarBis()\">Resaltar</button>\
+            </td>\
+            <td style=\"background-color:yellow;\">\
+                <p>Nanananananananananananananananananana</p>\
+            </td>";
+        }
+    </script>
+</body>
+</html>
