@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table style="border: 1px solid black;">
+        <tr>
+            <td style="border: 1px solid black;">T1</td>
+            <td style="border: 1px solid black;">T2</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid black;">T3</td>
+            <td style="border: 1px solid black;">T4</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid black;">T1</td>
+            <td style="border: 1px solid black;">T2</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid black;">T3</td>
+            <td style="border: 1px solid black;">T4</td>
+        </tr>
+        <br>
+    
+    </table>
+        <button onclick="pintaImpares()">Impar</button>
+        <button onclick="despintaImpares()">No Impar</button><br>
+        <button onclick="pintaPares()">Par</button>
+        <button onclick="despintaPares()">No Par</button>
+
+    <script>
+        function pintaImpares(){
+            let filas=document.getElementsByTagName('tr');
+            for (let i=0; i<filas.length; i=i+2){
+                filas[i].getElementsByTagName('td')[0].style.background="yellow";
+                filas[i].getElementsByTagName('td')[1].style.background="yellow";
+            }
+        }
+        function despintaImpares(){
+            let filas=document.getElementsByTagName('tr');
+            for (let i=0; i<filas.length; i=i+2){
+                filas[i].getElementsByTagName('td')[0].style.background="none";
+                filas[i].getElementsByTagName('td')[1].style.background="none";
+            }
+        }
+
+        function pintaPares(){
+            let filas=document.getElementsByTagName('tr');
+            for (let i=1; i<filas.length; i=i+2){
+                filas[i].getElementsByTagName('td')[0].style.background="yellow";
+                filas[i].getElementsByTagName('td')[1].style.background="yellow";
+            }
+        }
+        function despintaPares(){
+            let filas=document.getElementsByTagName('tr');
+            for (let i=1; i<filas.length; i=i+2){
+                filas[i].getElementsByTagName('td')[0].style.background="none";
+                filas[i].getElementsByTagName('td')[1].style.background="none";
+            }
+        }
+    </script>
+</body>
+</html>
