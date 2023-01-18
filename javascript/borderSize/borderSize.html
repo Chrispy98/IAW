@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table style="border: 1px solid black;">
+        <tr>
+            <td style="border: 1px solid lightblue;color:lightblue;">A</td>
+            <td style="border: 1px solid greenyellow;color:greenyellow">B</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid lightblue;color:lightblue;">C</td>
+            <td style="border: 1px solid greenyellow;color:greenyellow">D</td>
+        </tr> 
+    </table>
+    <br>
+    <button onclick="bigga()" style="font-size: 19px;">Make it biggaaaa</button>
+    <button onclick="smalla()" style="font-size: 8px;">Make it smalla</button>
+    <br>
+    <h1></h1>
+    <img>
+    <script>
+        function bigga(){
+            let newSize=parseInt(document.getElementsByTagName('table')[0].style.borderWidth)+1;
+            document.getElementsByTagName('table')[0].style.borderWidth=newSize+"px";
+            if (newSize==1){
+                document.getElementsByTagName('h1')[0].innerText="Un poco ya lo eres";
+                document.getElementsByTagName('img')[0].src="";
+            } else if (newSize>28){
+                document.getElementsByTagName('img')[0].src="titan.jpg";
+                document.getElementsByTagName('img')[0].style.width="228px";
+            } else if (newSize>21){
+                document.getElementsByTagName('h1')[0].innerText="Eres una causa perdida";
+            }else if (newSize>14){
+                document.getElementsByTagName('h1')[0].innerText="???? QUIERES PARAR????";
+            } else if (newSize>7){
+                document.getElementsByTagName('h1')[0].innerText="Qué haces";
+            }
+        }
+        function smalla(){
+            let newSize=parseInt(document.getElementsByTagName('table')[0].style.borderWidth)-1;
+            document.getElementsByTagName('table')[0].style.borderWidth=newSize+"px";
+            if (newSize<1){
+                document.getElementsByTagName('h1')[0].innerText="Se ve que muy borde no eres ;DDD";
+                document.getElementsByTagName('img')[0].src="tss.png";               
+                document.getElementsByTagName('img')[0].style.width="150px";
+            } else if (newSize<=7){
+                document.getElementsByTagName('h1')[0].innerText="";
+            } else if (newSize<=14){
+                document.getElementsByTagName('h1')[0].innerText=":)";
+            } else if (newSize<=21){
+                document.getElementsByTagName('h1')[0].innerText="Parece que estás viendo la luz";
+            } else if (newSize<=28){
+                document.getElementsByTagName('img')[0].src=""
+            }
+        }
+    </script>
+</body>
+</html>
