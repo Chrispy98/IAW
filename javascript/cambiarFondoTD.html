@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table style="border: 1px solid black;">
+        <tr>
+            <td style="border: 1px solid black;" onclick="color(this)" onmouseover="astro()" onmouseleave="muffPic()">A</td>
+            <td style="border: 1px solid black;" onclick="color(this)" onmouseover="tss()" onmouseleave="muffPic()">B</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid black;" onclick="color(this)" onmouseover="titan()" onmouseleave="muffPic()">C</td>
+            <td style="border: 1px solid black;" onclick="color(this)" onmouseover="dino()" onmouseleave="muffPic()">D</td>
+        </tr> 
+    </table><br>
+    <img>
+    <script>
+        function color(o1){
+            if (o1.style.backgroundColor=="yellow") {
+                o1.style.backgroundColor="white";
+            }
+            else {
+                o1.style.backgroundColor="yellow";
+            }
+        }
+
+        function titan(){
+            document.getElementsByTagName('img')[0].src="borderSize/titan.jpg";
+            document.getElementsByTagName('img')[0].style.width="50%";
+        }
+        function muffPic(){
+            document.getElementsByTagName('img')[0].src="";
+        }
+
+        function tss(){
+            document.getElementsByTagName('img')[0].src="borderSize/tss.png";
+            document.getElementsByTagName('img')[0].style.width="35%";
+        }
+
+        function dino(){
+            document.getElementsByTagName('img')[0].src="borderSize/din.jpg";
+            document.getElementsByTagName('img')[0].style.width="35%";
+        }
+
+        function astro(){
+            document.getElementsByTagName('img')[0].src="borderSize/astro.jpeg";
+            document.getElementsByTagName('img')[0].style.width="42%";
+        }
+        </script>
+</body>
+</html>
