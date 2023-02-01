@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form name="f1">
+        <input type="radio" name="iva" checked> IVA 21% <br>
+        <input type="radio" name="iva"> Sin IVA<br>
+        <input type="button" onclick="calcular()" value="Calcular"><br>
+        <input type="number" name="precio"> Precio <br>
+        <input type="button" onclick="ponerFondo()" value="Poner fondo">
+    </form><br>
+    <table style="border: black 1px solid; display: none;">
+        <tr>
+            <th style="border: black 1px solid;">Precio</td>
+            <th style="border: black 1px solid;">IVA</td>
+            <th style="border: black 1px solid;">Total</td>
+        </tr>
+        <tr>
+            <td style="border: black 1px solid;"></td>
+            <td style="border: black 1px solid;"></td>
+            <td style="border: black 1px solid;"></td>
+        </tr>
+    </table>
+    <script>
+        function calcular(){
+            let tabla=document.getElementsByTagName('table')[0];
+            document.getElementsByTagName('td')[0].innerHTML=document.f1.precio.value;
+            if (document.f1.iva[0].checked){
+                document.getElementsByTagName('td')[1].innerHTML=document.f1.precio.value*0.21;
+                document.getElementsByTagName('td')[2].innerHTML=document.f1.precio.value+document.f1.precio.value*0.21;
+            } else {
+                document.getElementsByTagName('td')[1].innerHTML=0;
+                document.getElementsByTagName('td')[2].innerHTML=document.f1.precio.value;
+            }
+            tabla.style.display="table";
+        }
+
+        function ponerFondo(){
+            document.getElementsByTagName('td')[1].style.backgroundColor="lightcoral";
+            document.getElementsByTagName('td')[2].style.backgroundColor="lightcoral";
+        }
+    </script>
+</body>
+</html>

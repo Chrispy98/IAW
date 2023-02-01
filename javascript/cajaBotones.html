@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text"><br><br>
+    <button onclick="cambia(0)">0</button><button onclick="cambia(1)">1</button><br>
+    <button onclick="cambia(2)">2</button><button onclick="cambia(3)">3</button><br><br>
+    <table style="border: 1px solid black;">
+        <tr>
+            <td style="border: 1px solid black;" ondblclick="borramos(this)">0</td>
+            <td style="border: 1px solid black;" ondblclick="borramos(this)">1</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid black;" ondblclick="borramos(this)">2</td>
+            <td style="border: 1px solid black;" ondblclick="borramos(this)">3</td>
+        </tr>
+    </table>
+    <script>
+        function borramos(celda){
+            celda.innerHTML="";
+        }
+
+        function cambia(pos){
+            let celda=document.getElementsByTagName('td')[pos].innerHTML;
+            if (celda==""){
+                document.getElementsByTagName('td')[pos].innerHTML=document.getElementsByTagName('input')[0].value;
+            }
+        }
+    </script>
+</body>
+</html>

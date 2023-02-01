@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="background-color: grey;">
+    <button id="bot">Dale</button>
+    <script>
+        function ponerONoPoner(num){
+            if (num==1){       
+                document.body.innerHTML+="<p></p>";
+                document.getElementsByTagName('button')[0].onclick=function(){ponFecha();}; 
+            }
+        }
+
+        function ponFecha(){
+            document.getElementsByTagName("p")[0].innerHTML=Date();
+        }
+
+        let num=parseInt(prompt("Selecciona el 1 para que puedes ver una fecha tras clicar en 'Dale', otro número si quieres que no haga nada."));
+        ponerONoPoner(num);
+    </script>
+</body>
+</html>

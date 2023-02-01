@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script> 
+	function cifrar() 
+	{ 
+		var x=parseInt(document.cif.x.value); 
+		var y=parseInt(document.cif.y.value); 
+		if (x==y) { 
+			document.cif.resul.value=0; 
+		}
+		else {
+			if (x>y) {
+				var suma=0; 
+				while (y<=x) {
+					suma=suma+y;
+					y=y+1; 
+				}
+				document.cif.resul.value=suma;
+			}
+			else {
+				var res=parseFloat((x+y)/2); 
+				document.cif.resul.value=res; 
+			}
+		}	
+	}
+</script> 
+<form name="cif"> 
+X: <input type="text" name="x"> <br> 
+Y: <input type="text" name="y"> <br> 
+Resultado: <input type="text" name="resul"> <br> 
+<input type="button" onclick="cifrar()" value="cifrar"> 
+</form>
+</body>
+</html>
